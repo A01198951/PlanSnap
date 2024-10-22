@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -19,7 +19,7 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 300, height: 200)
                     
-                NavigationLink(destination: EmpezarView()) {
+                NavigationLink(destination: FotosView()) {
                     Text("Empezar")
                         .font(.headline)
                         .frame(width: 200, height: 50)
@@ -27,16 +27,6 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
-
-                NavigationLink(destination: MisPlantasView()) {
-                    Text("Mis Plantas")
-                        .font(.headline)
-                        .frame(width: 200, height: 50)
-                        .background(Color(red: 50/255, green: 205/255, blue: 50/255))
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -47,5 +37,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
 }
