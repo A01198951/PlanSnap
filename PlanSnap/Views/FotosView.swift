@@ -20,7 +20,7 @@ struct FotosView: View {
     var body: some View {
         VStack(spacing: 20) {
             Spacer()
-            Text("Sube Tu Planta!")
+            Text("Identifica tu planta!")
                 .font(.system(size: 45))
                 .fontWeight(.bold)
                 .foregroundColor(Color(red: 34/255, green: 34/255, blue: 34/255))
@@ -30,6 +30,15 @@ struct FotosView: View {
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200.0)
+                    .padding(.top, 50)
+                    .padding(.bottom, 50)
+            } else {
+                Image(systemName: "photo")
+                    .resizable(resizingMode: .stretch)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200.0)
+                    .padding(.top, 50)
+                    .padding(.bottom, 50)
             }
             
             Button("Abrir Fotos") {
@@ -58,7 +67,7 @@ struct FotosView: View {
                 CameraPickerView(selectedImage: $selectedImage).ignoresSafeArea()
             }
             
-            Button("Identificar") {
+            Button {
                 if selectedImage == nil {
                     showAlert = true
                 } else {
@@ -66,9 +75,12 @@ struct FotosView: View {
                     historial.append(nuevaPlanta)
                     navigateToDetails = true
                 }
+            } label: {
+                Image(systemName: "magnifyingglass")
+            
             }
             .buttonStyle(PlainButtonStyle())
-            .frame(width: 250, height: 60)
+            .frame(width: 60, height: 60)
             .background(Color.blue)
             .fontWeight(.bold)
             .foregroundColor(.white)
