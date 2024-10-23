@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct TabBarView: View {
+    @Environment(\.modelContext)private var context
     @State private var historial: [PlantaH] = []
 
     var body: some View {
@@ -15,9 +16,13 @@ struct TabBarView: View {
                     Label("Mis Plantas", systemImage: "camera.macro.circle")
                 }
         }
+        .onAppear{
+            DataManager.addData(to: context)
+        }
     }
 }
 
 #Preview {
     TabBarView()
+        .modelContainer(for: [Planta.self], inMemory: true)
 }
