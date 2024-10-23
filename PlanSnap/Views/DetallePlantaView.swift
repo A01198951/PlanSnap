@@ -7,6 +7,7 @@ import Vision
 import UIKit
 import VideoToolbox
 
+
 struct DetallePlantaView: View {
     let image: UIImage
     @Query private var plantas: [Planta]
@@ -135,27 +136,35 @@ struct DetallePlantaView: View {
             
             let prediction = try model.prediction(from: inputFeatures)
             
+            // Agrega una constante para el umbral de confianza
+            let umbralConfianza: Double = 0.3 // 40% 
+
+            // En el método clasificarPlanta()
             if let outputFeatures = prediction.featureValue(for: "targetProbability")?.dictionaryValue as? [String: Double] {
-                let bestPrediction = outputFeatures.max { $0.value < $1.value }
+                // Filtrar las predicciones que superen el umbral de confianza
+                let filteredPredictions = outputFeatures.filter { $0.value >= umbralConfianza }
                 
-                DispatchQueue.main.async {
-                    if let bestPrediction = bestPrediction {
+                // Si hay predicciones válidas, tomar la mejor
+                if let bestPrediction = filteredPredictions.max(by: { $0.value < $1.value }) {
+                    DispatchQueue.main.async {
                         plantaIdentificada = bestPrediction.key
 
                         // Buscar la planta identificada en la lista de plantas
                         if let plantaEncontrada = plantas.first(where: { $0.nombre.lowercased() == plantaIdentificada.lowercased() }) {
                             plantaDescripcion = plantaEncontrada.descripción
                             plantaUso = plantaEncontrada.uso
+
+                            let nuevaPlanta = PlantaH(image: image, nombre: plantaIdentificada)
+                            historial.append(nuevaPlanta)
                         } else {
                             errorMessage = "No se encontró información detallada para la planta identificada"
                         }
-                    } else {
-                        errorMessage = "No se pudo identificar la planta"
                     }
-                    
-                    isLoading = false
+                } else {
+                    DispatchQueue.main.async {
+                        errorMessage = "Ninguna predicción superó el umbral de confianza"
+                    }
                 }
-
             } else {
                 throw NSError(domain: "Predicción", code: -1, userInfo: [NSLocalizedDescriptionKey: "No se pudieron obtener las probabilidades"])
             }

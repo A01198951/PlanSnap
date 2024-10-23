@@ -7,6 +7,7 @@ import UIKit
 struct PlantaH: Identifiable {
     let id = UUID()
     let image: UIImage
+    let nombre: String
 }
 
 struct FotosView: View {
@@ -71,8 +72,6 @@ struct FotosView: View {
                 if selectedImage == nil {
                     showAlert = true
                 } else {
-                    let nuevaPlanta = PlantaH(image: selectedImage!)
-                    historial.append(nuevaPlanta)
                     navigateToDetails = true
                 }
             } label: {
