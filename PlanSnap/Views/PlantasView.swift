@@ -34,19 +34,18 @@ struct PlantasView: View {
                             Text(planta.nombre)
                                 .font(.headline)
                         }
+                        .padding()
+                        .background(Color.white)
                         .cornerRadius(10)
                         .shadow(radius: 5)
-                        .padding(.horizontal)
+                        .padding(.vertical, 5)
                     }
                     .onDelete(perform: deleteItem)
                 }
-                .padding()
-                .padding(.bottom, 20)
                 .listStyle(PlainListStyle()) 
             }
             Spacer()
         }
-        .padding(.bottom, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(red: 205/255, green: 184/255, blue: 157/255))
         .edgesIgnoringSafeArea(.all)

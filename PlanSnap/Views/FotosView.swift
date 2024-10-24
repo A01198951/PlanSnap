@@ -30,6 +30,7 @@ struct FotosView: View {
                 Image(uiImage: image)
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
+                    .cornerRadius(10)
                     .frame(width: 200.0)
                     .padding(.top, 50)
                     .padding(.bottom, 50)
