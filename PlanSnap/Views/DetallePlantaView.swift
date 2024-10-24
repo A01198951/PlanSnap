@@ -39,25 +39,31 @@ struct DetallePlantaView: View {
             }
 
             if !plantaDescripcion.isEmpty || !plantaUso.isEmpty {
-                VStack(alignment: .center, spacing: 10) {
+                VStack(alignment: .leading, spacing: 20) {  // Increased spacing between sections
                     if !plantaDescripcion.isEmpty {
-                        Text("Descripción:")
-                            .font(.headline)
-                            .foregroundColor(.black)
-                        Text(plantaDescripcion)
-                            .font(.body)
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.center)
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Descripción:")
+                                .font(.headline)
+                                .foregroundColor(.black)
+                            Text(plantaDescripcion)
+                                .font(.system(size: 20))
+                                .foregroundColor(.black)
+                                .multilineTextAlignment(.leading)
+                                .lineSpacing(6)
+                        }
                     }
 
                     if !plantaUso.isEmpty {
-                        Text("Uso:")
-                            .font(.headline)
-                            .foregroundColor(.black)
-                        Text(plantaUso)
-                            .font(.body)
-                            .foregroundColor(.black)
-                            .multilineTextAlignment(.center)
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Uso:")
+                                .font(.headline)
+                                .foregroundColor(.black)
+                            Text(plantaUso)
+                                .font(.system(size: 20))
+                                .foregroundColor(.black)
+                                .multilineTextAlignment(.leading)
+                                .lineSpacing(6)
+                        }
                     }
                 }
                 .padding()
@@ -176,4 +182,3 @@ struct DetallePlantaView: View {
 #Preview {
     DetallePlantaView(image: UIImage(systemName: "leaf")!, historial: .constant([]))
 }
-

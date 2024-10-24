@@ -21,7 +21,7 @@ struct FotosView: View {
     var body: some View {
         VStack(spacing: 20) {
             Spacer()
-            Text("Identifica tu planta!")
+            Text("Sube tu planta!")
                 .font(.system(size: 45))
                 .fontWeight(.bold)
                 .foregroundColor(Color(red: 34/255, green: 34/255, blue: 34/255))
