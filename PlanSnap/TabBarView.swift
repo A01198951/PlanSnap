@@ -22,6 +22,11 @@ struct TabBarView: View {
                 .tabItem {
                     Label("Aprendizaje", systemImage: "book")
                 }
+            
+            ChatBotView() 
+                .tabItem {
+                    Label("Chatbot", systemImage: "message")
+                }
         }
         .onAppear {
             DataManager.addData(to: context)
@@ -33,4 +38,3 @@ struct TabBarView: View {
     TabBarView()
         .modelContainer(for: [Planta.self], inMemory: true)
 }
-
