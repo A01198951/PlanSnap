@@ -1,4 +1,4 @@
-//  PHPickerSwiftUI.swift
+//  Seleccion de Fotos
 
 import SwiftUI
 import PhotosUI
@@ -23,7 +23,6 @@ struct PHPickerSwiftUI: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
-        // No se modifica nada en esta vista
     }
     
     func makeCoordinator() -> Coordinator {

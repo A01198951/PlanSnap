@@ -5,13 +5,18 @@ import GoogleGenerativeAI
 
 struct ChatBotView: View {
     
-    let model = GenerativeModel(name: "gemini-pro", apiKey: "API KEVIN")
+    let model = GenerativeModel(name: "gemini-pro", apiKey: APIKey.default)
     
     @State private var messages: [(String, Bool)] = [("¡Hola! ¿En qué puedo ayudarte hoy?", false)]
     @State private var input: String = ""
 
     var body: some View {
         VStack {
+            Text("Snaplant AI")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding()
+
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 10) {
                     ForEach(messages.indices, id: \.self) { index in
@@ -27,25 +32,24 @@ struct ChatBotView: View {
                 TextField("Pregunta cualquier cosa", text: $input)
                     .textFieldStyle(.roundedBorder)
                 
-                
                 Spacer()
                 
                 Button(action: {
                     if !input.isEmpty {
                         messages.append((input, true)) // Add user message
+                        let userInput = input // Store user input
+                        input = "" 
                         Task {
                             do {
-                                let response = try await model.generateContent(input)
+                                let response = try await model.generateContent(userInput)
                                 if let text = response.text {
                                     messages.append((text, false))
-                                    input = ""
                                 }
                             } catch {
                                 messages.append(("Error: \(error.localizedDescription)", false))
                             }
                         }
                     }
-                    
                 }, label: {
                     Image(systemName: "paperplane.fill")
                         .font(.title)

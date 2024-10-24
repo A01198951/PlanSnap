@@ -1,9 +1,4 @@
-//
-//  DataManager.swift
-//  PlanSnap
-//
-//  Created by Oscar Zhao Xu on 21/10/24.
-//
+// Base de Datos
 
 import Foundation
 import SwiftData

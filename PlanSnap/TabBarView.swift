@@ -1,4 +1,4 @@
-// Tomar Foto
+// Tab Bar View
 
 import SwiftUI
 
@@ -25,7 +25,7 @@ struct TabBarView: View {
             
             ChatBotView() 
                 .tabItem {
-                    Label("Chatbot", systemImage: "message")
+                    Label("Snaplant AI", systemImage: "message")
                 }
         }
         .onAppear {

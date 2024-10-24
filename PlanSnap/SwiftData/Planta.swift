@@ -1,9 +1,4 @@
-//
-//  Planta.swift
-//  PlanSnap
-//
-//  Created by Oscar Zhao Xu on 21/10/24.
-//
+// Modelo
 
 import Foundation
 import SwiftData

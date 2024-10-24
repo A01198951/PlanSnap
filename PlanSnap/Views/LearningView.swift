@@ -28,21 +28,21 @@ struct LearningView: View {
     ]
     
     var body: some View {
-        ScrollView {
+        VStack {
             VStack(alignment: .leading, spacing: 10) {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("¡Bienvenido!")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                    Text("Descubre datos curiosos sobre plantas")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                }
-                .padding()
-                .background(Color(.systemGray6).opacity(0.9))
-                .cornerRadius(10)
-                .padding(.horizontal)
+                Text("¡Bienvenido!")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                Text("Descubre datos curiosos sobre plantas")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+            }
+            .padding()
+            .background(Color(.systemGray6).opacity(0.9))
+            .cornerRadius(10)
+            .padding(.horizontal)
 
+            ScrollView {
                 VStack(spacing: 20) {
                     ForEach(plantas) { planta in
                         VStack(alignment: .leading, spacing: 10) {
@@ -58,20 +58,20 @@ struct LearningView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.white)
                         .cornerRadius(10)
-                        .shadow(color: .gray.opacity(0.5), radius: 5, x: 0, y: 2)                     }
+                        .shadow(color: .gray.opacity(0.5), radius: 5, x: 0, y: 2)
+                    }
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 16)
                 .padding(.bottom, 40)
             }
             .padding(.top)
+
+            Spacer()
         }
         .background(customColor.ignoresSafeArea())
     }
 }
 
-struct LearningView_Previews: PreviewProvider {
-    static var previews: some View {
-        LearningView()
-    }
+#Preview {
+    LearningView()
 }
-
