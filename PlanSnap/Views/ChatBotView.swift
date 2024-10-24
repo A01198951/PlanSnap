@@ -5,7 +5,7 @@ import GoogleGenerativeAI
 
 struct ChatBotView: View {
     
-    let model = GenerativeModel(name: "gemini-pro", apiKey: "AIzaSyASz2KvzNFmBiXwDtDQQofumzG2t5wSeJE")
+    let model = GenerativeModel(name: "gemini-pro", apiKey: "API KEVIN")
     
     @State private var messages: [(String, Bool)] = [("¡Hola! ¿En qué puedo ayudarte hoy?", false)]
     @State private var input: String = ""
